@@ -44,7 +44,7 @@ class IndexController extends Controller
     {
         $this->validate($request, [
             'name' => 'required|min:3|max:255',
-            'phone' => 'required|phone:AUTO,UA,mobile|min:9|max:20|unique:contacts',
+            'phone' => 'required|phone:AUTO,UA,mobile|unique:contacts',
             'photo' => 'image|mimes:jpeg,png,gif'
         ]);
 
@@ -118,8 +118,6 @@ class IndexController extends Controller
             'phone' => [
                 'required',
                 'phone:AUTO,UA,mobile',
-                'min:9',
-                'max:20',
                 Rule::unique('contacts')->ignore($id)
             ],
             'photo' => 'image|mimes:jpeg,png,gif',
