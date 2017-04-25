@@ -284,6 +284,9 @@ $(document).ready(function () {
 	addForm.submit(function(){
 		addModalForm.clearErrors();
 		var formData = new FormData(this);
+
+		formData.set('phone', formData.get('phone').replace(/[^\d\+]/g, ''));
+
 		$.ajax({
 			url: this.action,
 			data: formData,
@@ -323,7 +326,8 @@ $(document).ready(function () {
 		var formData = new FormData(this);
 		formData.append('_method', 'PUT');
 
-		formData.append('delete-photo', editForm.find('#delete-photo :checkbox').prop('checked'));
+		formData.set('phone', formData.get('phone').replace(/[^\d\+]/g, ''));
+		formData.set('delete-photo', editForm.find('#delete-photo :checkbox').prop('checked'));
 
 		$.ajax({
 			url: '/update/' + editData.id,

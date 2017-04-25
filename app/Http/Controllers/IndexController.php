@@ -45,14 +45,12 @@ class IndexController extends Controller
         $this->validate($request, [
             'name' => 'required|min:3|max:255',
             'phone' => 'required|phone:AUTO,UA,mobile|min:9|max:20|unique:contacts',
-            'photo' => 'image'
+            'photo' => 'image|mimes:jpeg,png,gif'
         ]);
 
         $name = request('name');
         $phone = request('phone');
         $photo = $request->file('photo');
-
-        $phone = preg_replace('/[^\d\+]/', '', $phone);
 
         if ($photo) {
             $photo = $photo->store('photos', 'public');
@@ -124,16 +122,13 @@ class IndexController extends Controller
                 'max:20',
                 Rule::unique('contacts')->ignore($id)
             ],
-            'photo' => 'image',
+            'photo' => 'image|mimes:jpeg,png,gif',
         ]);
-
 
         $name = request('name');
         $phone = request('phone');
         $deletePhoto = request('delete-photo') === 'true';
         $photo = $request->file('photo');
-
-        $phone = preg_replace('/[^\d\+]/', '', $phone);
 
         try {
             $contact = Contact::find($id);

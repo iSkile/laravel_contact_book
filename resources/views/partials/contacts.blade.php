@@ -5,7 +5,7 @@
         </div>
         <div class="col-md-9 col-xs-8">
             <div data-name="name" class="contact-name">{{ $contact->name }}</div>
-            <span data-name="phone">{{ phone($contact->phone, 'UA') }}</span>
+            <span data-name="phone">{{ $contact->phone }}</span>
         </div>
         <div class="col-sm-1 col-xs-2">
             <button class="btn btn-link btn-edit"><img src="/img/edit.png" alt="edit"></button>
