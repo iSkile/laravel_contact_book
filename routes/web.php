@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Middleware\formatNumber;
+// use App\Http\Middleware\formatNumber;
 
 /*
 |--------------------------------------------------------------------------
